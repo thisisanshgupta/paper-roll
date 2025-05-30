@@ -1,0 +1,244 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    /* Light theme - base colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    /* Card and UI elements */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    /* Primary color - vibrant blue */
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary and accent colors */
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    /* Utility colors */
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 83% 53%;
+
+    /* Colorful text elements */
+    --title-color: 250 95% 60%;
+    --author-color: 130 60% 35%;
+    --category-color-1: 330 80% 45%;
+    --category-color-2: 276 80% 55%;
+    --category-color-3: 190 90% 40%;
+    --category-color-4: 35 90% 45%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark theme - soft charcoal instead of pure black */
+    --background: 220 10% 4%;
+    --foreground: 210 20% 98%;
+
+    /* Card and UI elements - slightly lighter than background */
+    --card: 220 10% 6%;
+    --card-foreground: 210 20% 98%;
+    --popover: 220 10% 6%;
+    --popover-foreground: 210 20% 98%;
+
+    /* Primary color - adjusted for charcoal theme */
+    --primary: 217 90% 60%;
+    --primary-foreground: 220 10% 4%;
+
+    /* Secondary and accent colors */
+    --secondary: 215 14% 12%;
+    --secondary-foreground: 210 20% 98%;
+    --accent: 215 14% 12%;
+    --accent-foreground: 210 20% 98%;
+
+    /* Utility colors */
+    --muted: 215 14% 16%;
+    --muted-foreground: 215 14% 65%;
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 14% 14%;
+    --input: 215 14% 14%;
+    --ring: 217 90% 60%;
+
+    /* Colorful text elements for dark theme */
+    --title-color: 250 95% 70%;
+    --author-color: 130 70% 60%;
+    --category-color-1: 330 80% 65%;
+    --category-color-2: 276 80% 70%;
+    --category-color-3: 190 90% 60%;
+    --category-color-4: 35 90% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+/* Colorful text classes */
+.title-text {
+  color: hsl(var(--title-color));
+}
+
+.author-text {
+  color: hsl(var(--author-color));
+}
+
+.category-1 {
+  background-color: hsl(var(--category-color-1) / 0.15);
+  color: hsl(var(--category-color-1));
+  border-color: hsl(var(--category-color-1) / 0.2);
+}
+
+.category-2 {
+  background-color: hsl(var(--category-color-2) / 0.15);
+  color: hsl(var(--category-color-2));
+  border-color: hsl(var(--category-color-2) / 0.2);
+}
+
+.category-3 {
+  background-color: hsl(var(--category-color-3) / 0.15);
+  color: hsl(var(--category-color-3));
+  border-color: hsl(var(--category-color-3) / 0.2);
+}
+
+.category-4 {
+  background-color: hsl(var(--category-color-4) / 0.15);
+  color: hsl(var(--category-color-4));
+  border-color: hsl(var(--category-color-4) / 0.2);
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Optimize rendering */
+.will-change-transform {
+  will-change: transform;
+}
+
+.transform-gpu {
+  transform: translateZ(0);
+}
+
+/* Improve scrolling performance */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overscroll-behavior-y: none;
+}
+
+/* Dialog animation optimization */
+.dialog-content {
+  animation: none !important;
+}
+
+/* Transition optimizations */
+.card {
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.button-transition {
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+/* Improve tap highlight on mobile */
+@media (hover: none) {
+  a:active,
+  button:active {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Math formatting styles */
+.math-content .inline-math {
+  font-family: monospace;
+  color: hsl(var(--primary));
+  background-color: rgba(0, 0, 0, 0.03);
+  padding: 0 0.2em;
+  border-radius: 3px;
+  white-space: nowrap;
+  overflow-x: auto;
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.dark .math-content .inline-math {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.math-content .block-math {
+  font-family: monospace;
+  color: hsl(var(--primary));
+  background-color: rgba(0, 0, 0, 0.03);
+  padding: 0.5em 1em;
+  margin: 0.5em 0;
+  border-left: 3px solid hsl(var(--primary));
+  border-radius: 3px;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.dark .math-content .block-math {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Make sure math expressions don't break layout on small screens */
+@media (max-width: 640px) {
+  .math-content .inline-math {
+    max-width: 90vw;
+  }
+
+  .math-content .block-math {
+    font-size: 0.9em;
+  }
+}
+
+/* Card hover effect */
+.paper-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.paper-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.dark .paper-card:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+}
